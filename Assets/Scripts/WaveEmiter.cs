@@ -29,7 +29,6 @@ public class WaveEmiter : MonoBehaviour {
     }
 	// Update is called once per frame
 	void Update () {
-    transform.Translate(new Vector3(Input.GetAxis("Horizontal"),0,0));
         if (SpectrumAnalyzer.isThisABeat())
         {
             if(_bluesource.mute==false)
