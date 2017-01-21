@@ -44,9 +44,6 @@ public class playerController : MonoBehaviour
         rend = GetComponent<Renderer>();
         rb = GetComponent<Rigidbody>();
         vectorJump = new Vector3(0, jumpForce, 0);
-
-        tmpChangeMaterialColor();
-
     }
 
     void FixedUpdate()
@@ -211,22 +208,6 @@ public class playerController : MonoBehaviour
         }
     }
 
-    void tmpChangeMaterialColor()
-    {
-        switch (waveColor)
-        {
-            case WaveColor.blue:
-                rend.material.SetColor("_Color", Color.blue);
-                break;
-            case WaveColor.green:
-                rend.material.SetColor("_Color", Color.green);
-                break;
-            case WaveColor.red:
-                rend.material.SetColor("_Color", Color.red);
-                break;
-        }
-    }
-
     public void switchWaveLeft()
     {
         switch (waveColor)
@@ -241,7 +222,6 @@ public class playerController : MonoBehaviour
                 waveColor = WaveColor.green;
                 break;
         }
-        tmpChangeMaterialColor();
     }
 
     public void switchWaveRight()
@@ -258,7 +238,6 @@ public class playerController : MonoBehaviour
                 waveColor = WaveColor.blue;
                 break;
         }
-        tmpChangeMaterialColor();
     }
     void OnCollisionEnter(Collision coll)
     {
