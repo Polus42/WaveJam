@@ -1,21 +1,26 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class GlobalBehaviour : MonoBehaviour {
 
     public int color = 1; // 1 == BLUE; 2 == GREEN; 3 == RED;
 
     private bool triggerTaped = false;
-    private GameObject[] gameBlocks;
+    private List<GameObject> gameBlocks = new List<GameObject>();
 
     private GameObject _player;
 
     // Use this for initialization
     void Start () {
         _player = GameObject.Find("Player");
-        if (gameBlocks == null)
-            gameBlocks = GameObject.FindGameObjectsWithTag("GameBlock");
+        if (gameBlocks.Capacity == 0)
+        {
+            gameBlocks.AddRange(GameObject.FindGameObjectsWithTag("GameBlock"));
+            gameBlocks.AddRange(GameObject.FindGameObjectsWithTag("Green"));
+            gameBlocks.AddRange(GameObject.FindGameObjectsWithTag("White"));
+        }
     }
 	
 	// Update is called once per frame
@@ -77,9 +82,9 @@ public class GlobalBehaviour : MonoBehaviour {
     {
         foreach (GameObject gameBlock in gameBlocks)
         {
-            if(color == 1) //RED
+            if(color == 1) //BLUE
             {
-                if(gameBlock.GetComponent<floorBase>().isRedActive)
+                if(gameBlock.GetComponent<floorBase>().isBlueActive)
                 {
                     gameBlock.SetActive(true);
                 }
@@ -88,20 +93,20 @@ public class GlobalBehaviour : MonoBehaviour {
                     gameBlock.SetActive(false);
                 }
             }
-            if (color == 2) //BLUE
-            {
-                if (gameBlock.GetComponent<floorBase>().isBlueActive)
-                {
-                    gameBlock.SetActive(true);
-                }
-                else
-                {
-                    gameBlock.SetActive(false);
-                }
-            }
-            if (color == 3) //GREEN
+            if (color == 2) //GREEN
             {
                 if (gameBlock.GetComponent<floorBase>().isGreenActive)
+                {
+                    gameBlock.SetActive(true);
+                }
+                else
+                {
+                    gameBlock.SetActive(false);
+                }
+            }
+            if (color == 3) //RED
+            {
+                if (gameBlock.GetComponent<floorBase>().isRedActive)
                 {
                     gameBlock.SetActive(true);
                 }
