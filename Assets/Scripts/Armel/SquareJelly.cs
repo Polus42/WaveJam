@@ -24,9 +24,9 @@ public class SquareJelly : MonoBehaviour {
     void ChangeScale ()
     {
         newScaleX = (Mathf.Abs(jellyTopRight.position.x - jellyTopLeft.position.x) + Mathf.Abs(jellyBotRight.position.x - jellyBotLeft.position.x)) / 2;
-        newScaleX = (newScaleX / 0.6f) * 0.2f;
+        newScaleX = (newScaleX / 0.74f) * 0.75f;
         newScaleY = (Mathf.Abs(jellyTopRight.position.y - jellyBotRight.position.y) + Mathf.Abs(jellyTopLeft.position.y - jellyBotLeft.position.y)) / 2;
-        newScaleY = (newScaleY / 0.6f) * 0.2f;
+        newScaleY = (newScaleY / 0.74f) * 0.75f;
         transform.localScale = new Vector3(newScaleX, newScaleY, transform.localScale.z);
     }
 }
