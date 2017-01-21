@@ -12,7 +12,6 @@ public class WaveEmiter : MonoBehaviour {
     public float fadeouttime = 8f;
     public float speed = 40;
 
-
     private AudioSource _switchSound;
     private AudioSource _bluesource;
     private AudioSource _redsource;
@@ -105,14 +104,44 @@ public class WaveEmiter : MonoBehaviour {
         _bluesource.mute = true;
         SwitchColor(greenColor);
     }
+    public void SwitchWaveRight()
+    {
+        if (_bluesource.mute == false)
+        {
+            SwitchToGreen();
+        }
+        else if (_greensource.mute == false)
+        {
+            SwitchToRed();
+        }
+        else if (_redsource.mute == false)
+        {
+            SwitchToBlue();
+        }
+    }
+    public void SwitchWaveLeft()
+    {
+        if (_bluesource.mute == false)
+        {
+            SwitchToRed();
+        }
+        else if (_greensource.mute == false)
+        {
+            SwitchToBlue();
+        }
+        else if (_redsource.mute == false)
+        {
+            SwitchToGreen();
+        }
+    }
     // for testing purposes only
     void OnGUI()
     {
         /*stringToEdit = GUI.TextField(new Rect(10, 20, 200, 20), stringToEdit, 25);
-        */
+        
         if (GUI.Button(new Rect(10, 10, 100, 20), "Switch Blue"))
             SwitchToBlue();
         if (GUI.Button(new Rect(10, 30, 100, 20), "Switch Red"))
-            SwitchToRed();
+            SwitchToRed();*/
     }
 }

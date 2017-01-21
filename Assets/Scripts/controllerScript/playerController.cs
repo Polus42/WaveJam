@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class playerController : MonoBehaviour
 {
@@ -174,8 +175,8 @@ public class playerController : MonoBehaviour
             rb.useGravity = true;
         }
 
-        //Change Wave
-        if (Input.GetButtonDown("LeftTrigger"))
+        //Change Wave now in global behavior
+        /*if (Input.GetButtonDown("LeftTrigger"))
         {
             switchWaveLeft();
         }
@@ -183,7 +184,7 @@ public class playerController : MonoBehaviour
         if (Input.GetButtonDown("RightTrigger"))
         {
             switchWaveRight();
-        }
+        }*/
 
         //check timer wall jump
         timerWallJump += Time.deltaTime;
@@ -226,7 +227,7 @@ public class playerController : MonoBehaviour
         }
     }
 
-    void switchWaveLeft()
+    public void switchWaveLeft()
     {
         switch (waveColor)
         {
@@ -243,7 +244,7 @@ public class playerController : MonoBehaviour
         tmpChangeMaterialColor();
     }
 
-    void switchWaveRight()
+    public void switchWaveRight()
     {
         switch (waveColor)
         {
@@ -259,7 +260,6 @@ public class playerController : MonoBehaviour
         }
         tmpChangeMaterialColor();
     }
-
     void OnCollisionEnter(Collision coll)
     {
         if(coll.gameObject.tag == "Green")
