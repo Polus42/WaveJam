@@ -3,14 +3,13 @@ using System.Collections;
 
 public class floorBase : MonoBehaviour {
 
-    public bool isFast = false;
-    public int color = 1;
+    public bool isRedActive = false;
+    public bool isGreenActive = false;
+    public bool isBlueActive = false;
 
-    private GameObject player;
-
-	// Use this for initialization
-	void Start () {
-	    //Get player walk speed
+    // Use this for initialization
+    void Start () {
+	
 	}
 	
 	// Update is called once per frame
@@ -18,20 +17,4 @@ public class floorBase : MonoBehaviour {
 	    
 	}
 
-    private void changeWorld()
-    {
-        if(Input.GetButtonDown("LeftTrigger"))
-        {
-            if (color == 1) color = 3;
-            if (color == 2) color = 1;
-            if (color == 3) color = 2;
-        }
-
-        if (Input.GetButtonDown("RightTrigger"))
-        {
-            if (color == 1) color = 2;
-            if (color == 2) color = 3;
-            if (color == 3) color = 1;
-        }
-    }
 }

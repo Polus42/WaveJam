@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class WaveEmiter : MonoBehaviour {
     public Texture WaveShape;
     public float Intensity = 1f;
+    public float fadeouttime = 8f;
     private List<Light> _lightWave = new List<Light>();
     private string stringToEdit = "";
     // Use this for initialization
@@ -38,6 +39,7 @@ public class WaveEmiter : MonoBehaviour {
         while(lightComp.cookieSize<100)
         {
             lightComp.cookieSize += Time.deltaTime*speed ;
+            lightComp.intensity -= Time.deltaTime*fadeouttime;
             yield return null;
         }
         _lightWave.Remove(lightComp);
