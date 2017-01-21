@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 public class WaveEmiter : MonoBehaviour {
     public Texture WaveShape;
+    public float Intensity = 1f;
     private List<Light> _lightWave = new List<Light>();
     private string stringToEdit = "";
     // Use this for initialization
@@ -20,8 +21,10 @@ public class WaveEmiter : MonoBehaviour {
         GameObject lightGameObject = new GameObject("Wave");
         Light lightComp = lightGameObject.AddComponent<Light>();
         lightComp.color = c;
+        lightComp.intensity = Intensity;
         lightComp.type = LightType.Directional;
         lightComp.cookie = WaveShape;
+        lightComp.cookieSize = 1;
         lightGameObject.transform.position = transform.position;
         lightGameObject.transform.Translate(new Vector3(0, 0, -9));
         lightGameObject.transform.localEulerAngles = new Vector3(0,0,0);
