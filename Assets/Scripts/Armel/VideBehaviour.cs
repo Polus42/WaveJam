@@ -21,6 +21,7 @@ public class VideBehaviour : MonoBehaviour {
     {
         if (other.CompareTag("Player"))
         {
+            GetComponent<AudioSource>().Play();
             levelManager.RespawnPlayer();
         }
     }
