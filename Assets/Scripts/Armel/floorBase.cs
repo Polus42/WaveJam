@@ -9,8 +9,8 @@ public class floorBase : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-	
-	}
+        GetComponent<Renderer>().material.mainTextureScale = new Vector2(transform.localScale.x, transform.localScale.y);
+    }
 	
 	// Update is called once per frame
 	void Update () {
