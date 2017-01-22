@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MenuBehavior : MonoBehaviour {
-    private int activeButton = 0; // 0 play , 1 quit
     private GameObject player;
 	// Use this for initialization
 	void Start () {
         player = GameObject.Find("Player");
+        InvokeRepeating("switchColor", 5.0f, 5.0f);
     }
 	
 	// Update is called once per frame
@@ -37,5 +37,9 @@ public class MenuBehavior : MonoBehaviour {
     {
         GameObject.Find("CameraMenu").SetActive(false);
         player.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionZ;
+    }
+    void switchColor()
+    {
+        player.GetComponent<WaveEmiter>().SwitchWaveLeft();
     }
 }
