@@ -122,5 +122,6 @@ public class GlobalBehaviour : MonoBehaviour {
     public void RespawnPlayer()
     {
         _player.transform.position = currentCheckpoint.transform.position;
+        currentCheckpoint.GetComponent<CheckpointBehaviour>().particle.Play();
     }
 }
