@@ -10,6 +10,9 @@ public class GlobalBehaviour : MonoBehaviour {
 
     private bool triggerTaped = false;
     private List<GameObject> gameBlocks = new List<GameObject>();
+    private GameObject[] UIParticles1;
+    private GameObject[] UIParticles2;
+    private GameObject[] UIParticles3;
 
     private GameObject _player;
 
@@ -21,6 +24,18 @@ public class GlobalBehaviour : MonoBehaviour {
             gameBlocks.AddRange(GameObject.FindGameObjectsWithTag("GameBlock"));
             gameBlocks.AddRange(GameObject.FindGameObjectsWithTag("Green"));
             gameBlocks.AddRange(GameObject.FindGameObjectsWithTag("White"));
+        }
+
+        UIParticles1 = GameObject.FindGameObjectsWithTag("UIParticles");
+        UIParticles2 = GameObject.FindGameObjectsWithTag("UIParticles2");
+        UIParticles3 = GameObject.FindGameObjectsWithTag("UIParticles3");
+        foreach (GameObject particles in UIParticles2)
+        {
+            particles.SetActive(false);
+        }
+        foreach (GameObject particles in UIParticles3)
+        {
+            particles.SetActive(false);
         }
     }
 	
@@ -65,18 +80,48 @@ public class GlobalBehaviour : MonoBehaviour {
     {
         if (color == 1)
         {
-            GameObject.Find("LBUI").GetComponent<RawImage>().color = Color.green;
-            GameObject.Find("RBUI").GetComponent<RawImage>().color = Color.red;
+            foreach(GameObject particles in UIParticles1)
+            {
+                particles.SetActive(true);
+            }
+            foreach (GameObject particles in UIParticles2)
+            {
+                particles.SetActive(false);
+            }
+            foreach (GameObject particles in UIParticles3)
+            {
+                particles.SetActive(false);
+            }
         }
         else if (color == 2)
         {
-            GameObject.Find("LBUI").GetComponent<RawImage>().color = Color.red;
-            GameObject.Find("RBUI").GetComponent<RawImage>().color = Color.blue;
+            foreach (GameObject particles in UIParticles1)
+            {
+                particles.SetActive(false);
+            }
+            foreach (GameObject particles in UIParticles2)
+            {
+                particles.SetActive(true);
+            }
+            foreach (GameObject particles in UIParticles3)
+            {
+                particles.SetActive(false);
+            }
         }
         else
         {
-            GameObject.Find("LBUI").GetComponent<RawImage>().color = Color.blue;
-            GameObject.Find("RBUI").GetComponent<RawImage>().color = Color.green;
+            foreach (GameObject particles in UIParticles1)
+            {
+                particles.SetActive(false);
+            }
+            foreach (GameObject particles in UIParticles2)
+            {
+                particles.SetActive(false);
+            }
+            foreach (GameObject particles in UIParticles3)
+            {
+                particles.SetActive(true);
+            }
         }
     }
     private void UpdateWorld ()
