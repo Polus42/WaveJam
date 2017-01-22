@@ -37,6 +37,7 @@ public class playerController : MonoBehaviour
 
     private bool isOnGreenPlatform = false;
     private bool isOnWhitePlatform = false;
+    private bool isOnRedPlatform = false;
     
     // Use this for initialization
     void Start()
@@ -133,7 +134,7 @@ public class playerController : MonoBehaviour
         }
 
         //Climb
-        if(waveColor == WaveColor.red && !isOnWhitePlatform)
+        if(waveColor == WaveColor.red && isOnRedPlatform)
         {
             if((wallLeft || wallRight) && !isWallJumping)
             {
@@ -247,6 +248,13 @@ public class playerController : MonoBehaviour
         } else if (coll.gameObject.tag == "White")
         {
             isOnWhitePlatform = true;
+        } else if (coll.gameObject.GetComponent<floorBase>())
+        {
+            floorBase fb = coll.gameObject.GetComponent<floorBase>();
+            if(fb.isRedActive && !fb.isGreenActive && !fb.isBlueActive)
+            {
+                isOnRedPlatform = true;
+            }
         }
     }
 
@@ -258,6 +266,13 @@ public class playerController : MonoBehaviour
         } else if (coll.gameObject.tag == "White")
         {
             isOnWhitePlatform = false;
+        } else if (coll.gameObject.GetComponent<floorBase>())
+        {
+            floorBase fb = coll.gameObject.GetComponent<floorBase>();
+            if (fb.isRedActive && !fb.isGreenActive && !fb.isBlueActive)
+            {
+                isOnRedPlatform = false;
+            }
         }
     }
 
