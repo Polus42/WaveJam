@@ -5,6 +5,9 @@ public class playerCollider : MonoBehaviour {
 
     public string side;
 
+    private bool isTriggered = false;
+    Collider other;
+
 	// Use this for initialization
 	void Start () {
 	
@@ -12,6 +15,12 @@ public class playerCollider : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        if(isTriggered && !other.gameObject.activeSelf)
+        {
+            GetComponentInParent<playerController>().setWallBounce(side, false);
+            isTriggered = false;
+            other = null;
+        }
 	
 	}
 
@@ -24,6 +33,8 @@ public class playerCollider : MonoBehaviour {
         {
             if (coll.gameObject.tag != "CheckPoint")
             {
+                isTriggered = true;
+                other = coll;
                 GetComponentInParent<playerController>().setWallBounce(side, true);
             }
         }
@@ -31,6 +42,8 @@ public class playerCollider : MonoBehaviour {
 
     void OnTriggerExit(Collider coll)
     {
-            GetComponentInParent<playerController>().setWallBounce(side, false);
+        GetComponentInParent<playerController>().setWallBounce(side, false);
+        isTriggered = false;
+        other = null;
     }
 }
