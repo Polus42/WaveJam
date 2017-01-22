@@ -63,6 +63,7 @@ public class playerController : MonoBehaviour
             onGround = false;
         }
 
+
         //Movement
         if (!isWallJumping)
         {
@@ -107,13 +108,15 @@ public class playerController : MonoBehaviour
             }
         }
 
+
+
         //Jump
         if (Input.GetButtonDown("Jump") && !isOnGreenPlatform)
         {
             if (onGround && !wallTop)
             {
                 rb.AddForce(vectorJump, ForceMode.VelocityChange);
-                                
+                
             }
             else if (wallLeft)
             {

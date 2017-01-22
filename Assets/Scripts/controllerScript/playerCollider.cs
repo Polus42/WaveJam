@@ -22,7 +22,10 @@ public class playerCollider : MonoBehaviour {
             Debug.Log("Gotcha !");
         } else
         {
-            GetComponentInParent<playerController>().setWallBounce(side, true);
+            if (coll.gameObject.tag != "CheckPoint")
+            {
+                GetComponentInParent<playerController>().setWallBounce(side, true);
+            }
         }
     }
 
