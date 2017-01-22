@@ -12,6 +12,8 @@ public class WaveEmiter : MonoBehaviour {
     public float fadeouttime = 8f;
     public float speed = 40;
 
+    private GameObject _spotlight;
+
     private AudioSource _switchSound;
     private AudioSource _bluesource;
     private AudioSource _redsource;
@@ -25,6 +27,8 @@ public class WaveEmiter : MonoBehaviour {
         _redsource = gameObject.GetComponents<AudioSource>()[1];
         _greensource = gameObject.GetComponents<AudioSource>()[2];
         _switchSound = gameObject.GetComponents<AudioSource>()[3];
+        _spotlight = GameObject.Find("Spotlight");
+        _spotlight.GetComponent<Light>().color = blueColor;
     }
 	// Update is called once per frame
 	void Update () {
@@ -86,6 +90,7 @@ public class WaveEmiter : MonoBehaviour {
         _redsource.mute = true;
         _greensource.mute = true;
         _bluesource.mute = false;
+        _spotlight.GetComponent<Light>().color = blueColor;
         SwitchColor(blueColor);
     }
     void SwitchToRed()
@@ -94,6 +99,7 @@ public class WaveEmiter : MonoBehaviour {
         _redsource.mute = false;
         _greensource.mute = true;
         _bluesource.mute = true;
+        _spotlight.GetComponent<Light>().color = redColor;
         SwitchColor(redColor);
     }
     void SwitchToGreen()
@@ -102,6 +108,7 @@ public class WaveEmiter : MonoBehaviour {
         _redsource.mute = true;
         _greensource.mute = false;
         _bluesource.mute = true;
+        _spotlight.GetComponent<Light>().color = greenColor;
         SwitchColor(greenColor);
     }
     public void SwitchWaveRight()

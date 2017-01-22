@@ -1,6 +1,11 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Audio/musique_joie_loop.wav.meta
 guid: 83e9c25f235274e41bf8d49895a04ed7
 timeCreated: 1485049182
+=======
+guid: 82cb3d5ba84402b4abe2552dcb6b78b7
+timeCreated: 1485050922
+>>>>>>> cd5528e1b4bf08ce5842f26fe48ef4bb0221cb4d:Assets/Audio/musique_dark_intro.wav.meta
 licenseType: Free
 AudioImporter:
   serializedVersion: 6
