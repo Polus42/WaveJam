@@ -6,6 +6,7 @@ using System.Collections.Generic;
 public class GlobalBehaviour : MonoBehaviour {
 
     public int color = 1; // 1 == BLUE; 2 == GREEN; 3 == RED;
+    public GameObject currentCheckpoint;
 
     private bool triggerTaped = false;
     private List<GameObject> gameBlocks = new List<GameObject>();
@@ -116,5 +117,10 @@ public class GlobalBehaviour : MonoBehaviour {
                 }
             }
         }
+    }
+
+    public void RespawnPlayer()
+    {
+        _player.transform.position = currentCheckpoint.transform.position;
     }
 }
